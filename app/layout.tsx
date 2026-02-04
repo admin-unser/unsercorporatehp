@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://unser-jp.com"),
+  icons: {
+    icon: "/icon.svg",
+  },
   alternates: {
     canonical: "/",
   },
