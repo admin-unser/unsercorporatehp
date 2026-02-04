@@ -2,7 +2,7 @@ export default function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "UNSER.inc",
+    name: "UNSER合同会社",
     url: "https://unser-jp.com",
     logo: "https://unser-jp.com/logo.png",
     description: "お客様の事業成長のコンシェルジュとして、多くのお客様の良きパートナーとして、支え仕えます。",
@@ -16,7 +16,7 @@ export default function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "UNSER.inc",
+    name: "UNSER合同会社",
     url: "https://unser-jp.com",
     potentialAction: {
       "@type": "SearchAction",
@@ -31,7 +31,7 @@ export default function StructuredData() {
     serviceType: "Business Services",
     provider: {
       "@type": "Organization",
-      name: "UNSER.inc",
+      name: "UNSER合同会社",
     },
     areaServed: {
       "@type": "Country",

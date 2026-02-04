@@ -8,7 +8,7 @@ export default function CompanyOverview() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const companyInfo = [
-    { label: '会社名', labelEn: 'Company Name', value: 'UNSER Inc.', valueJa: 'UNSER株式会社' },
+    { label: '会社名', labelEn: 'Company Name', value: 'UNSER合同会社', valueJa: 'UNSER合同会社' },
     { label: '設立', labelEn: 'Founded', value: '2023年5月1日', valueJa: '' },
     { label: '従業員数', labelEn: 'Employees', value: '30名', valueJa: '（業務委託パートナー含む）' },
     { label: '事業内容', labelEn: 'Business', value: 'BPO事業 / システム開発事業 / コンサルティング事業', valueJa: '' },

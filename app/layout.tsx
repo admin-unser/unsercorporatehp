@@ -9,14 +9,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "UNSER.inc - Your Growth, Our Mission",
-    template: "%s | UNSER.inc",
+    default: "UNSER合同会社 - Your Growth, Our Mission",
+    template: "%s | UNSER合同会社",
   },
   description: "お客様の事業成長のコンシェルジュとして、多くのお客様の良きパートナーとして、支え仕えます。BPO事業、システム開発事業、コンサルティング事業を展開しています。",
   keywords: ["BPO", "コールセンター", "システム開発", "コンサルティング", "業務効率化", "アプリ開発", "WEB制作"],
-  authors: [{ name: "UNSER.inc" }],
-  creator: "UNSER.inc",
-  publisher: "UNSER.inc",
+  authors: [{ name: "UNSER合同会社" }],
+  creator: "UNSER合同会社",
+  publisher: "UNSER合同会社",
   formatDetection: {
     email: false,
     address: false,
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     url: "https://unser-jp.com",
-    siteName: "UNSER.inc",
-    title: "UNSER.inc - Your Growth, Our Mission",
+    siteName: "UNSER合同会社",
+    title: "UNSER合同会社 - Your Growth, Our Mission",
     description: "お客様の事業成長のコンシェルジュとして、多くのお客様の良きパートナーとして、支え仕えます。",
   },
   twitter: {
     card: "summary_large_image",
-    title: "UNSER.inc - Your Growth, Our Mission",
+    title: "UNSER合同会社 - Your Growth, Our Mission",
     description: "お客様の事業成長のコンシェルジュとして、多くのお客様の良きパートナーとして、支え仕えます。",
   },
   robots: {

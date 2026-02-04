@@ -194,17 +194,17 @@ export default function Footer() {
           className="mt-16 pt-8 border-t border-white/[0.04] flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-[#52525b] text-xs">
-            © {new Date().getFullYear()} UNSER Inc. All rights reserved.
+            © {new Date().getFullYear()} UNSER合同会社 All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link
-              href="#privacy"
+              href="/privacy"
               className="text-[#52525b] hover:text-[#a1a1aa] text-xs transition-colors duration-300"
             >
               プライバシーポリシー
             </Link>
             <Link
-              href="#terms"
+              href="/terms"
               className="text-[#52525b] hover:text-[#a1a1aa] text-xs transition-colors duration-300"
             >
               利用規約

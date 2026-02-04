@@ -315,7 +315,7 @@ export default function Contact() {
                       onFocus={() => setFocusedField('company')}
                       onBlur={() => setFocusedField(null)}
                       className={inputClasses('company', false)}
-                      placeholder="株式会社○○"
+                      placeholder="合同会社○○"
                     />
                   </div>
 

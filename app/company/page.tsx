@@ -6,8 +6,8 @@ import Philosophy from '@/app/company/components/Philosophy';
 import ContactInfo from '@/app/company/components/ContactInfo';
 
 export const metadata = {
-  title: '会社情報 | UNSER.inc',
-  description: 'UNSER.incの会社概要、代表メッセージ、企業理念をご紹介します。',
+  title: '会社情報 | UNSER合同会社',
+  description: 'UNSER合同会社の会社概要、代表メッセージ、企業理念をご紹介します。',
 };
 
 export default function CompanyPage() {
