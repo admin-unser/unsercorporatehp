@@ -1,10 +1,9 @@
 # Netlify 設定ファイル - UNSER ホームページ
 # https://docs.netlify.com/configure-builds/file-based-configuration/
-# Next.js 14 は Netlify が自動検出し、OpenNext でビルドします
 
 [build]
   command = "npm run build"
-  publish = ".next"
 
-# 独自ドメイン設定は Netlify ダッシュボードの
-# Domain settings > Custom domains で追加してください
+# Next.js 用 Netlify プラグイン（v5）
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

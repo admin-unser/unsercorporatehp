@@ -231,8 +231,8 @@ export default function Contact() {
                 key="form"
                 name="contact"
                 method="POST"
-                data-netlify="true"
                 action="/success"
+                encType="application/x-www-form-urlencoded"
                 onSubmit={handleSubmit}
                 className="relative space-y-6"
               >
