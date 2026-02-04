@@ -261,44 +261,65 @@ export default function ServicesDetail() {
     <section
       id="services-detail"
       ref={ref}
-      className="relative py-24 px-6 bg-black"
+      className="relative py-32 px-6 bg-gradient-to-b from-[#030303] via-[#050505] to-[#030303]"
     >
-      <div className="container mx-auto">
+      {/* Subtle Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-gradient-to-r from-indigo-500/[0.03] to-transparent blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-l from-purple-500/[0.03] to-transparent blur-3xl" />
+      </div>
+
+      <div className="container mx-auto max-w-7xl relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-16"
         >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.02] mb-6"
+          >
+            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse" />
+            <span className="text-xs font-medium tracking-[0.15em] uppercase text-[#a1a1aa]">
+              Service Details
+            </span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight"
           >
-            <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-              サービス詳細
+            <span className="text-gradient-primary">
+              各サービスの詳細
             </span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3 }}
-            className="text-lg text-gray-400 max-w-3xl mx-auto"
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-base md:text-lg text-[#a1a1aa] max-w-2xl mx-auto leading-relaxed"
           >
-            お客様のニーズに迅速かつ柔軟に対応し、反復的なプロセスで最適解を追求することで、
+            アジャイルなアプローチで最適解を追求し、
             <br className="hidden md:block" />
-            期待を超える価値をお届けします。
+            <span className="text-white/90">期待を超える価値</span>をお届けします。
           </motion.p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {serviceDetails.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
+
+        {/* Bottom Divider */}
+        <div className="mt-20 section-divider" />
       </div>
     </section>
   );

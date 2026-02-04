@@ -60,6 +60,16 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
+        {/* Netlify Forms: ビルド時にフォームを検出するための隠しフォーム（Next.js必須） */}
+        <form name="contact" method="POST" data-netlify="true" action="/success" hidden>
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="text" name="company" />
+          <input type="text" name="phone" />
+          <input type="text" name="inquiry_type" />
+          <textarea name="message" />
+        </form>
         <StructuredData />
         <ScrollProgress />
         <CursorFollower />

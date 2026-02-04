@@ -20,9 +20,15 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-1 bg-black/50 z-50">
+    <div className="fixed top-0 left-0 right-0 h-[2px] bg-transparent z-[60]">
       <motion.div
-        className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+        className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+        style={{ width: `${scrollProgress}%` }}
+        transition={{ duration: 0.1 }}
+      />
+      {/* Glow effect */}
+      <motion.div
+        className="absolute top-0 h-1 blur-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-60"
         style={{ width: `${scrollProgress}%` }}
         transition={{ duration: 0.1 }}
       />
