@@ -95,13 +95,15 @@ export default function Contact() {
         message: formData.message,
       });
 
-      const response = await fetch('/', {
+      // Netlify Forms: 送信先は静的ファイル（__forms.html）である必要がある
+      const response = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formPayload.toString(),
       });
 
-      if (response.ok) {
+      // Netlifyは成功時に302リダイレクトを返すため、redirectedも成功とみなす
+      if (response.ok || response.redirected) {
         router.push('/success');
       } else {
         throw new Error('送信に失敗しました');

@@ -124,12 +124,15 @@ Netlify は Let's Encrypt で自動的に HTTPS を有効化します。数分�
 
 Netlify でデプロイする場合は **Netlify Forms** が手軽です。
 
-1. フォームに `data-netlify="true"` と `name` 属性を追加
-2. 送信先を Netlify に任せる
+**Next.js + Netlify の重要ポイント：**
+- 送信先は必ず **静的ファイル**（`/__forms.html`）に POST する
+- `public/__forms.html` にフォーム定義を配置し、Netlify がビルド時に検出する
+- `/` への POST では Next.js が処理してしまい、Netlify に届かない
+
+1. `public/__forms.html` に `data-netlify="true"` のフォームを定義
+2. fetch の送信先を `/__forms.html` に指定
 3. Netlify ダッシュボードの **Forms** タブで送信内容を確認
 4. 通知メールの設定も可能
-
-導入を希望される場合は、`Contact.tsx` の具体的な修正案を作成します。
 
 ---
 
