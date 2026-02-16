@@ -214,18 +214,27 @@ export default function Hero() {
           </motion.a>
         </motion.div>
 
-        {/* Trust Indicators */}
+        {/* Value Props */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
           className="mt-16 pt-8 border-t border-white/5"
         >
-          <p className="text-xs text-[#71717a] mb-4 tracking-wider uppercase">Trusted by innovative companies</p>
-          <div className="flex justify-center items-center gap-8 opacity-40">
-            <div className="text-2xl font-bold tracking-tight">Client A</div>
-            <div className="text-2xl font-bold tracking-tight">Client B</div>
-            <div className="text-2xl font-bold tracking-tight">Client C</div>
+          <p className="text-xs text-[#71717a] mb-6 tracking-wider uppercase">Our Commitment</p>
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
+            <a href="#services-detail" className="group flex flex-col items-center gap-1 hover:opacity-100 transition-opacity duration-300 opacity-60">
+              <span className="text-lg font-bold tracking-tight text-white group-hover:text-indigo-400 transition-colors">24時間対応</span>
+              <span className="text-[10px] text-[#71717a] tracking-wider">迅速なご返信</span>
+            </a>
+            <a href="#services-detail" className="group flex flex-col items-center gap-1 hover:opacity-100 transition-opacity duration-300 opacity-60">
+              <span className="text-lg font-bold tracking-tight text-white group-hover:text-purple-400 transition-colors">成果にコミット</span>
+              <span className="text-[10px] text-[#71717a] tracking-wider">KPIベースの提案</span>
+            </a>
+            <a href="#services-detail" className="group flex flex-col items-center gap-1 hover:opacity-100 transition-opacity duration-300 opacity-60">
+              <span className="text-lg font-bold tracking-tight text-white group-hover:text-pink-400 transition-colors">伴走型支援</span>
+              <span className="text-[10px] text-[#71717a] tracking-wider">導入後もサポート</span>
+            </a>
           </div>
         </motion.div>
       </motion.div>

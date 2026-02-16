@@ -55,8 +55,8 @@ const businessAreas: BusinessArea[] = [
     id: 'bpo',
     title: 'BPO事業',
     titleEn: 'Business Process Outsourcing',
-    description: 'コア業務への集中を可能にする戦略的アウトソーシング。コールセンター運営からポスティングまで、品質と効率を両立した業務支援を提供します。',
-    services: ['インバウンド・アウトバウンドコール', 'ポスティング・DM配送', 'リスト作成・データ入力', 'カスタマーサポート'],
+    description: 'コア業務への集中を可能にする戦略的アウトソーシング。MAKU（ポスティング）とコールセンター（インアウト）を柱に、品質と効率を両立した業務支援を提供します。',
+    services: ['MAKU（ポスティングサービス）', 'コールセンター（インアウト）', 'DM配送・効果測定', 'カスタマーサポート'],
     icon: <BpoIcon />,
     gradient: 'from-indigo-500/10 via-blue-500/5 to-transparent',
     accentColor: '#6366f1',
@@ -210,14 +210,15 @@ function BusinessCard({ area, index }: { area: BusinessArea; index: number }) {
           </div>
 
           {/* Learn More Link */}
-          <motion.div
-            className="mt-8 pt-6 border-t border-white/5"
+          <motion.a
+            href="#services-detail"
+            className="mt-8 pt-6 border-t border-white/5 block"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0.6 }}
             transition={{ duration: 0.3 }}
           >
             <span 
-              className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300 cursor-pointer"
               style={{ color: isHovered ? area.accentColor : '#71717a' }}
             >
               詳細を見る
@@ -230,7 +231,7 @@ function BusinessCard({ area, index }: { area: BusinessArea; index: number }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
-          </motion.div>
+          </motion.a>
         </div>
 
         {/* Corner Decorations */}
