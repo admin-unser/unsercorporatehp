@@ -4,10 +4,28 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
-const navItems = [
+type NavChild = { name: string; href: string };
+type NavItem = {
+  name: string;
+  nameEn: string;
+  href: string;
+  children?: NavChild[];
+};
+
+const navItems: NavItem[] = [
   { name: 'ホーム', nameEn: 'Home', href: '/#home' },
   { name: '会社情報', nameEn: 'Company', href: '/company' },
-  { name: 'サービス', nameEn: 'Services', href: '/#services' },
+  {
+    name: 'サービス',
+    nameEn: 'Services',
+    href: '/services',
+    children: [
+      { name: 'サービス一覧', href: '/services' },
+      { name: 'BPO事業', href: '/services/bpo' },
+      { name: 'システム開発', href: '/services/system' },
+      { name: 'コンサルティング', href: '/services/consulting' },
+    ],
+  },
   { name: '事例', nameEn: 'Cases', href: '/#case-studies' },
 ];
 
@@ -36,19 +54,30 @@ export default function Header() {
     >
       <nav className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - 階段が順番にぽんぽん */}
           <Link href="/" className="flex items-center gap-3 group">
             <motion.div
-              className="relative"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="relative w-8 h-8"
+              initial="rest"
+              whileHover="hover"
+              variants={{ rest: {}, hover: {} }}
             >
               {/* Logo Mark - Staircase inspired */}
-              <div className="w-8 h-8 relative">
-                <div className="absolute bottom-0 left-0 w-2 h-2 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-sm" />
-                <div className="absolute bottom-2 left-2 w-2 h-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-sm" />
-                <div className="absolute bottom-4 left-4 w-2 h-2 bg-gradient-to-br from-pink-500 to-rose-500 rounded-sm" />
-              </div>
+              <motion.div
+                className="absolute bottom-0 left-0 w-2 h-2 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-sm"
+                variants={{ rest: { scale: 1, x: 0, y: 0 }, hover: { scale: 1.2, x: 0, y: -2 } }}
+                transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+              />
+              <motion.div
+                className="absolute bottom-2 left-2 w-2 h-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-sm"
+                variants={{ rest: { scale: 1, x: 0, y: 0 }, hover: { scale: 1.2, x: -1, y: -2 } }}
+                transition={{ type: 'spring', stiffness: 500, damping: 20, delay: 0.05 }}
+              />
+              <motion.div
+                className="absolute bottom-4 left-4 w-2 h-2 bg-gradient-to-br from-pink-500 to-rose-500 rounded-sm"
+                variants={{ rest: { scale: 1, x: 0, y: 0 }, hover: { scale: 1.2, x: -2, y: -2 } }}
+                transition={{ type: 'spring', stiffness: 500, damping: 20, delay: 0.1 }}
+              />
             </motion.div>
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-tight text-white">
@@ -68,15 +97,43 @@ export default function Header() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.05 }}
+                className="relative group/nav"
               >
-                <Link
-                  href={item.href}
-                  className="relative px-4 py-2 text-sm font-medium text-[#a1a1aa] hover:text-white transition-colors duration-300 group"
-                >
-                  <span className="relative z-10">{item.name}</span>
-                  <span className="absolute inset-0 rounded-lg bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
-                  <span className="absolute bottom-1 left-4 right-4 h-[1px] bg-gradient-to-r from-indigo-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                </Link>
+                {item.children ? (
+                  <>
+                    <Link
+                      href={item.href}
+                      className="relative px-4 py-2 text-sm font-medium text-[#a1a1aa] hover:text-white transition-colors duration-300 flex items-center gap-1"
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                      <svg className="w-3.5 h-3.5 opacity-70 group-hover/nav:rotate-180 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </Link>
+                    <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200">
+                      <div className="py-2 min-w-[180px] rounded-xl border border-white/[0.08] bg-[#0a0a0a]/95 backdrop-blur-xl shadow-xl">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block px-4 py-2.5 text-sm text-[#a1a1aa] hover:text-white hover:bg-white/[0.05] transition-colors first:rounded-t-lg last:rounded-b-lg"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="relative px-4 py-2 text-sm font-medium text-[#a1a1aa] hover:text-white transition-colors duration-300 group"
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    <span className="absolute inset-0 rounded-lg bg-white/0 group-hover:bg-white/[0.04] transition-colors duration-300" />
+                    <span className="absolute bottom-1 left-4 right-4 h-[1px] bg-gradient-to-r from-indigo-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  </Link>
+                )}
               </motion.div>
             ))}
             
@@ -167,6 +224,20 @@ export default function Header() {
                       <span className="font-medium">{item.name}</span>
                       <span className="text-xs text-[#52525b]">{item.nameEn}</span>
                     </Link>
+                    {item.children && (
+                      <div className="pl-4 pb-2 space-y-0.5">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block py-2 px-4 rounded-lg text-sm text-[#71717a] hover:text-white hover:bg-white/[0.03] transition-all duration-300"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </motion.div>
                 ))}
                 <motion.div

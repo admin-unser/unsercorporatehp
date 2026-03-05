@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CursorFollower() {
@@ -78,39 +78,42 @@ export default function CursorFollower() {
 
   if (!isDesktop) return null;
 
+  const ringBorder = isHovering ? 'rgba(236, 72, 153, 0.6)' : 'rgba(99, 102, 241, 0.4)';
+  const dotGradient = isHovering
+    ? 'linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)'
+    : 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)';
+
   return (
-    <>
-      {/* Outer Ring */}
+    <React.Fragment>
       <motion.div
         className="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none z-[9999]"
         style={{
-          border: '1px solid rgba(99, 102, 241, 0.4)',
+          border: `2px solid ${ringBorder}`,
           mixBlendMode: 'difference',
         }}
         animate={{
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
+          scale: isHovering ? 1.8 : 1,
           opacity: isVisible ? 1 : 0,
         }}
         transition={{
           type: 'spring',
-          stiffness: 300,
-          damping: 20,
-          mass: 0.5,
+          stiffness: 400,
+          damping: 25,
+          mass: 0.4,
         }}
       />
-      {/* Inner Dot */}
       <motion.div
         className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full pointer-events-none z-[9999]"
         style={{
-          background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+          background: dotGradient,
           mixBlendMode: 'difference',
         }}
         animate={{
           x: mousePosition.x - 3,
           y: mousePosition.y - 3,
-          scale: isHovering ? 0.5 : 1,
+          scale: isHovering ? 0.3 : 1,
           opacity: isVisible ? 1 : 0,
         }}
         transition={{
@@ -119,6 +122,6 @@ export default function CursorFollower() {
           damping: 25,
         }}
       />
-    </>
+    </React.Fragment>
   );
 }

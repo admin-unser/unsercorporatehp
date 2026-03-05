@@ -147,7 +147,7 @@ export default function Hero() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Main Headline */}
+        {/* Main Headline - ひとこと傾けて遊び心 */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -155,10 +155,24 @@ export default function Hero() {
           className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold mb-8 leading-[1.1] tracking-tight"
         >
           <span className="block text-gradient-primary mb-2">
-            想像を超える体験で
+            想像を超える
+            <motion.span
+              className="inline-block origin-left"
+              whileHover={{ rotate: -3, scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            >
+              体験で
+            </motion.span>
           </span>
           <span className="block text-gradient-accent">
-            事業の未来を共創する
+            事業の未来を
+            <motion.span
+              className="inline-block origin-bottom-left"
+              whileHover={{ rotate: 2, scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            >
+              共創する
+            </motion.span>
           </span>
         </motion.h1>
 
@@ -183,9 +197,10 @@ export default function Hero() {
         >
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="group relative px-10 py-4 overflow-hidden rounded-full font-semibold text-white transition-all duration-300"
+            whileHover={{ scale: 1.05, y: -4 }}
+            whileTap={{ scale: 0.96, y: 0 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            className="group relative px-10 py-4 overflow-hidden rounded-full font-semibold text-white"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
             <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -199,8 +214,9 @@ export default function Hero() {
           </motion.a>
           <motion.a
             href="#services"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.05, y: -4 }}
+            whileTap={{ scale: 0.96, y: 0 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             className="group relative px-10 py-4 rounded-full font-semibold text-white overflow-hidden"
           >
             <span className="absolute inset-0 border border-white/20 rounded-full group-hover:border-white/40 transition-colors duration-300" />
@@ -223,23 +239,41 @@ export default function Hero() {
         >
           <p className="text-xs text-[#71717a] mb-6 tracking-wider uppercase">Our Commitment</p>
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-            <a href="#services-detail" className="group flex flex-col items-center gap-1 hover:opacity-100 transition-opacity duration-300 opacity-60">
+            <motion.a
+              href="#services-detail"
+              className="group flex flex-col items-center gap-1 opacity-60 hover:opacity-100"
+              whileHover={{ y: -4, scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+            >
               <span className="text-lg font-bold tracking-tight text-white group-hover:text-indigo-400 transition-colors">24時間対応</span>
               <span className="text-[10px] text-[#71717a] tracking-wider">迅速なご返信</span>
-            </a>
-            <a href="#services-detail" className="group flex flex-col items-center gap-1 hover:opacity-100 transition-opacity duration-300 opacity-60">
+            </motion.a>
+            <motion.a
+              href="#services-detail"
+              className="group flex flex-col items-center gap-1 opacity-60 hover:opacity-100"
+              whileHover={{ y: -4, scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+            >
               <span className="text-lg font-bold tracking-tight text-white group-hover:text-purple-400 transition-colors">成果にコミット</span>
               <span className="text-[10px] text-[#71717a] tracking-wider">KPIベースの提案</span>
-            </a>
-            <a href="#services-detail" className="group flex flex-col items-center gap-1 hover:opacity-100 transition-opacity duration-300 opacity-60">
+            </motion.a>
+            <motion.a
+              href="#services-detail"
+              className="group flex flex-col items-center gap-1 opacity-60 hover:opacity-100"
+              whileHover={{ y: -4, scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+            >
               <span className="text-lg font-bold tracking-tight text-white group-hover:text-pink-400 transition-colors">伴走型支援</span>
               <span className="text-[10px] text-[#71717a] tracking-wider">導入後もサポート</span>
-            </a>
+            </motion.a>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - ちょっと弾む */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -247,12 +281,17 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: [0.4, 0, 0.6, 1] }}
           className="flex flex-col items-center gap-2"
         >
           <span className="text-xs text-[#71717a] tracking-widest uppercase">Scroll</span>
-          <div className="w-[1px] h-8 bg-gradient-to-b from-white/50 to-transparent" />
+          <motion.div
+            className="w-[1px] h-8 bg-gradient-to-b from-white/50 to-transparent rounded-full"
+            animate={{ scaleY: [1, 0.6, 1] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: [0.4, 0, 0.6, 1] }}
+            style={{ transformOrigin: 'top' }}
+          />
         </motion.div>
       </motion.div>
 

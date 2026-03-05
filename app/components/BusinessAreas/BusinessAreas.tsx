@@ -211,7 +211,7 @@ function BusinessCard({ area, index }: { area: BusinessArea; index: number }) {
 
           {/* Learn More Link */}
           <motion.a
-            href="#services-detail"
+            href={`/services/${area.id}`}
             className="mt-8 pt-6 border-t border-white/5 block"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0.6 }}

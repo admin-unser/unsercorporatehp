@@ -10,9 +10,10 @@ const footerLinks = {
     { name: '企業理念', href: '/company#philosophy' },
   ],
   services: [
-    { name: 'BPO事業', href: '/#services' },
-    { name: 'システム開発', href: '/#services' },
-    { name: 'コンサルティング', href: '/#services' },
+    { name: 'サービス一覧', href: '/services' },
+    { name: 'BPO事業', href: '/services/bpo' },
+    { name: 'システム開発', href: '/services/system' },
+    { name: 'コンサルティング', href: '/services/consulting' },
   ],
   resources: [
     { name: '実績・事例', href: '/#case-studies' },
